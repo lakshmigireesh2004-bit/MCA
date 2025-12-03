@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Online Exam</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Simple Online Exam</h1>
+
+    <form id="examForm">
+        <div class="question">
+            <p>1. What is 2 + 2?</p>
+            <input type="radio" name="q1" value="3"> 3<br>
+            <input type="radio" name="q1" value="4"> 4<br>
+            <input type="radio" name="q1" value="5"> 5<br>
+        </div>
+
+        <div class="question">
+            <p>2. Which language is used to style web pages?</p>
+            <input type="radio" name="q2" value="HTML"> HTML<br>
+            <input type="radio" name="q2" value="CSS"> CSS<br>
+            <input type="radio" name="q2" value="JavaScript"> JavaScript<br>
+        </div>
+
+        <button type="button" onclick="checkAnswers()">Submit</button>
+    </form>
+
+    <h2 id="result"></h2>
+
+    <script>
+        function checkAnswers() {
+            let score = 0;
+
+            // Get answers
+            let q1 = document.querySelector('input[name="q1"]:checked');
+            let q2 = document.querySelector('input[name="q2"]:checked');
+
+            // Check if user selected answers
+            if (!q1 || !q2) {
+                alert("Please answer all questions!");
+                return;
+            }
+
+            // Correct answers
+            if (q1.value === "4") score++;
+            if (q2.value === "CSS") score++;
+
+            // Show result
+            document.getElementById("result").innerText = "Your score: " + score + " out of 2";
+        }
+    </script>
+
+</body>
+</html>
